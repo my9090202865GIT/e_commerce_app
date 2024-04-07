@@ -6,6 +6,7 @@ import { addCategories, addProducts } from './redux/features/productSlice'
 import styled from "styled-components";
 import useAuth from "./hooks/useAuth";
 import { addcurrentCategory } from "./redux/features/productSlice";
+import toast, { Toaster } from 'react-hot-toast';
 
 import RatingStar from './components/RatingStar'
 const StyleComp = styled.div`
@@ -16,7 +17,7 @@ const StyleComp = styled.div`
   .container {
     display: flex;
     align-items: center;
-    flex-direction: row;
+    flex-cdirection: row;
     flex-wrap: wrap;
   }
   
@@ -40,34 +41,6 @@ const StyleComp = styled.div`
     font-size: 22px;
   }
   
-  .card button {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 80%;
-    font-size: 18px;
-  }
-  
-  .checkout {
-    border: none;
-    outline: 0;
-    padding: 12px;
-    color: white;
-    background-color: #000;
-    text-align: center;
-    cursor: pointer;
-    width: 20%;
-    font-size: 18px;
-    margin: top 2px;
-  }
-  
-  .checkout a {
-    color: #cbe4de;
-  }
   
   /* cart styling */
   .card button:hover {
@@ -95,105 +68,16 @@ const StyleComp = styled.div`
     border-bottom: 1px solid #E1E8EE;
   }
   
-  .buttons {
-    position: relative;
-    padding-top: 30px;
-    margin-right: 60px;
-  }
   
-  .delete-btn,
-  .like-btn {
-    display: inline-block;
-    Cursor: pointer;
-  }
-  
-  .delete-btn {
-    width: 18px;
-    height: 17px;
-  }
-  
-  .like-btn {
-    position: absolute;
-    top: 9px;
-    left: 15px;
-    /* background: url('twitter-heart.png'); */
-    width: 60px;
-    height: 60px;
-    background-size: 2900%;
-    background-repeat: no-repeat;
-  }
-  
-  .image {
+  imag {
     margin-right: 50px;
   }
-  
-  .description {
-    padding-top: 10px;
-    margin-right: 60px;
-    width: 115px;
-  }
-  
-  .description span {
-    display: block;
-    font-size: 14px;
-    color: #43484D;
-    font-weight: 400;
-  }
-  
-  .description span:first-child {
-    margin-bottom: 5px;
-  }
-  
-  .description span:last-child {
-    font-weight: 300;
-    margin-top: 8px;
-    color: #86939E;
-  }
-  
-  .quantity {
-    padding-top: 20px;
-    margin-right: 60px;
-  }
-  
-  .quantity input {
-    border: none;
-    text-align: center;
-    width: 32px;
-    font-size: 16px;
-    color: #43484D;
-    font-weight: 300;
-  }
-  
-  button[class*=btn] {
-    width: 30px;
-    height: 30px;
-    background-color: #E1E8EE;
-    border-radius: 6px;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .minus-btn img {
-    margin-bottom: 3px;
-  }
-  
-  .plus-btn img {
-    margin-top: 2px;
-  }
-  
+
   button:focus,
   input:focus {
     outline: 0;
   }
-  
-  .total-price {
-    width: 83px;
-    padding-top: 27px;
-    text-align: center;
-    font-size: 16px;
-    color: #43484D;
-    font-weight: 300;
-  }`
+  `
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -236,27 +120,57 @@ const Home = () => {
 
   const addCart = (item) => {
     requireAuth(() => dispatch(addToCart(item)));
+    toast.success("your order has been confirmed");
+
   };
 
 
   return (
-    <StyleComp>
-      <div className='container'>
+    // <StyleComp>
+      <div className='container flex flex-wrap'>
         {showProducts && showProducts.map((item, index) => {
-          return (<div key={item.id} className="card">
-            <Link to={{ pathname: `/product/${item.id}` }}>
-              <img src={item.image} alt="Denim Jeans" style={{ width: "100%" }} />
-            </Link>
-            <Link>{item.title}</Link>
-
-            <p className="price">&#x20B9; {item.price}</p>
-            <p className='desc'>{item.description}</p>
-            <p><button onClick={() => addCart(item)}>Add to Cart</button></p>
-          </div>)
+          return (
+            <div key={item.id} class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+              <Link to={{ pathname: `/product/${item.id}` }}>
+                <img class="p-8 rounded-t-lg w-full h-80" src={item.image} alt="product image" />
+              </Link>
+              <div class="px-5 pb-5">
+                <Link to={{ pathname: `/product/${item.id}` }}>
+                  <h5 class="text-xl truncate font-semibold tracking-tight text-gray-900 dark:text-white">{item.title}</h5>
+                </Link>
+                <div class="flex items-center mt-2.5 mb-5">
+                  <RatingStar rating={item?.rating.rate}></RatingStar>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-3xl font-bold text-gray-900 dark:text-white">&#x20B9; {item.price}</span>
+                  <button onClick={() => addCart(item)} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add to cart</button>
+                </div>
+              </div>
+            </div>
+            // <div key={item.id} className="card aspect-w-3 aspect-h-4">
+            //   <Link to={{ pathname: `/product/${item.id}` }}>
+            //     <img src={item.image} className="w-full h-48 " alt={item.name} style={{ width: "100%" }} />
+            //   </Link>
+            //   <Link to={{ pathname: `/product/${item.id}` }}>
+            //   <h5 class="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">{item.title}</h5>
+            //   </Link>
+            //   <p className="price">&#x20B9; {item.price}</p>
+            //   {/* <p className='desc'>{item.description}</p> */}
+            //   <button
+            //     type="button"
+            //     className="flex items-center space-x-2 hover:bg-blue-500 text-white py-2 px-4 rounded bg-pink-500"
+            //     onClick={() => addCart(item)}
+            //     data-test="add-cart-btn"
+            //   >
+            //     <span>ADD TO CART</span>
+            //   </button>
+            // </div>
+          )
         })}
 
+        <Toaster />
       </div>
-    </StyleComp>
+    // </StyleComp>
   )
 }
 

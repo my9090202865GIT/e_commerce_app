@@ -13,16 +13,7 @@ export const productSlice = createSlice({
     addcurrentCategory: (state, action) => {
       return { ...state, currentCategory: action.payload };
     },
-    updateFeaturedList: (state, action) => {
-      return { ...state, featuredProducts: action.payload };
-    },
-    addToWishlist: (state, action) => {
-      const { wishlist } = state;
-      if (wishlist.findIndex((item) => item.id === action.payload.id) === -1) {
-        const updatedList = [...state.wishlist, action.payload];
-        return { ...state, wishlist: updatedList };
-      }
-    },
+    
     addCategories: (state, action) => {
       return { ...state, categories: action.payload };
     },
@@ -34,8 +25,6 @@ export const productSlice = createSlice({
 
 export const {
   addcurrentCategory,
-  updateFeaturedList,
-  addToWishlist,
   addCategories,
   addProducts,
 } = productSlice.actions;

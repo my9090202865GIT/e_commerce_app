@@ -23,7 +23,6 @@ const CartRow = ({
   discountPercentage = 0,
 }) => {
   const dispatch = useDispatch();
-  // const result = useDiscount({ price, discount: discountPercentage });
 
   return (
     <div className="grid grid-cols-7 gap-3 border items-center">
@@ -31,7 +30,6 @@ const CartRow = ({
       <div className="col-span-3">
         <h3 className="font-bold leading-4">{title}</h3>
         <div className="flex space-x-2 items-center">
-          {/* <h3 className="font-semibold">${result.toFixed(2)}</h3> */}
           <h3 className="font-semibold">&#x20B9;{price}</h3>
 
         </div>

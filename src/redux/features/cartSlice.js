@@ -33,7 +33,6 @@ export const cartSlice = createSlice({
       return { ...state, cartItems: updatedItems };
     },
     reduceFromCart: (state, action) => {
-      console.log("reduceFromCart Action Triggered");
 
       const { cartItems } = state;
       const _item = cartItems.find((item) => item.id === action.payload);

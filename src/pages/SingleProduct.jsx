@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { addToCart, setCartState } from "../redux/features/cartSlice";
 import RatingStar from "../components/RatingStar";
-import toast from "react-hot-toast";
+// import toast ,{ Toaster } from "react-hot-toast";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import useAuth from "../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,9 +37,9 @@ const SingleProduct = () => {
         dispatch(
           addToCart(product)
         );
-      toast.success("item added to cart successfully", {
-        duration: 3000,
-      });
+      // toast.success("item added to cart successfully", {
+      //   duration: 3000
+      // });
     });
   };
 
@@ -85,6 +85,7 @@ const SingleProduct = () => {
       </div>
       <hr className="mt-4" />
       <br />
+      {/* <Toaster /> */}
     </div>
   );
 };

@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import {
   BrowserRouter,
@@ -7,7 +6,6 @@ import {
   Link
 } from "react-router-dom";
 import Home from './home';
-// import Product from './product';
 import Footer from './components/Footer';
 import { Provider } from "react-redux";
 import { store } from './redux/store';
@@ -15,6 +13,7 @@ import Navbar from './components/Navbar'
 import SingleProduct from "./pages/SingleProduct";
 import LoginModal from './components/LoginModal'
 import Cart from './components/Cart'
+import Img_card from './Img_card'
 
 function App() {
 
@@ -35,17 +34,3 @@ function App() {
 }
 
 export default App;
-
-{/* <BrowserRouter>
-        <div>
-          <Provider store={store}>
-            <Navbar />
-            <Routes>
-              <Route exact path="/" element={<Home />} />
-              <Route path="/product" element={<Product />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
-            <Footer />
-          </Provider>
-        </div>
-      </BrowserRouter> */}

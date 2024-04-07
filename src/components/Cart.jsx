@@ -3,7 +3,7 @@ import { RxCross1 } from "react-icons/rx";
 import { useSelector, useDispatch } from "react-redux";
 import { emptyCart, setCartState } from "../redux/features/cartSlice";
 import CartRow from "./CartRow";
-import toast from "react-hot-toast";
+// import toast, { Toaster } from "react-hot-toast";
 
 const Cart = () => {
 
@@ -25,7 +25,16 @@ const Cart = () => {
     dispatch(setCartState(false));
     dispatch(emptyCart());
     setCheckout(false);
-    toast.success("your order has been confirmed", { duration: 3000 });
+    // toast('Hello Darkness!',
+    //   {
+    //     icon: '👏',
+    //     style: {
+    //       borderRadius: '10px',
+    //       background: '#333',
+    //       color: '#fff',
+    //     },
+    //   }
+    // );
   };
 
   if (isOpen) {
@@ -34,15 +43,9 @@ const Cart = () => {
         {checkout ? (
           <div className="max-w-[400px] w-full min-h-full bg-white absolute right-0 top-0 p-6 font-karla">
             <h1 className="font-bold text-xl mb-1">Checkout</h1>
-            <p className="leading-4 mb-3">
-              Welcome to the checkout section. This is being a development
-              project, I haven't implemented any payment related task. If you
-              click the cancel button you'll go back to the cart segment.
-              Clicking confirm button will consider your order confirmed,
-              payment done & also order delivered successfully. Another thing to
-              mention, order history hasn't been developed due to not having a
-              proper backend api.
-            </p>
+            <div className="flex items-center justify-between p-2 border-1">
+              <h2 className="font-bold text-2xl">Order amount - &#x20B9;{calculateTotal()}</h2>
+            </div>
             <div className="flex items-center space-x-2">
               <span
                 className="w-1/2 border border-gray-500 rounded cursor-pointer text-center py-1"
@@ -101,6 +104,10 @@ const Cart = () => {
             )}
           </div>
         )}
+        {/* <Toaster
+          position="top-right"
+          reverseOrder={false}
+        /> */}
       </div>
     );
   }

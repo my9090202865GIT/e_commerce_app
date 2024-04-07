@@ -29,7 +29,8 @@ const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-4xl font-bold" data-test="main-logo">
-            Ecommerce_site          </Link>
+            Ecommerce_site
+          </Link>
           <div className="lg:flex hidden w-full max-w-[500px]">
             <SategorySearchCompo></SategorySearchCompo>
           </div>
