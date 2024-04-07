@@ -7,16 +7,36 @@ import {
   Link
 } from "react-router-dom";
 import Home from './home';
-import Product from './product';
-import Cart from './cart';
-import Navbar from './navbar';
-import Footer from './footer';
+// import Product from './product';
+import Footer from './components/Footer';
 import { Provider } from "react-redux";
 import { store } from './redux/store';
+import Navbar from './components/Navbar'
+import SingleProduct from "./pages/SingleProduct";
+import LoginModal from './components/LoginModal'
+import Cart from './components/Cart'
+
 function App() {
+
   return (
-    <div className="App">
-      <BrowserRouter>
+    <BrowserRouter>
+      <Provider store={store}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/product/:productID" element={<SingleProduct />} />
+        </Routes>
+        <Footer />
+        <Cart />
+        <LoginModal />
+      </Provider>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+
+{/* <BrowserRouter>
         <div>
           <Provider store={store}>
             <Navbar />
@@ -28,9 +48,4 @@ function App() {
             <Footer />
           </Provider>
         </div>
-      </BrowserRouter>
-    </div>
-  );
-}
-
-export default App;
+      </BrowserRouter> */}
