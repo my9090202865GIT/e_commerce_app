@@ -1,0 +1,13 @@
+
+
+.card-img {
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin: 2rem;
+}
+
+
+#dropdown{
+    transform: translateY(45px);
+}

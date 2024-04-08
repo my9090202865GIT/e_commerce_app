@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { addToCart, setCartState } from "../redux/features/cartSlice";
 import RatingStar from "../components/RatingStar";
-// import toast ,{ Toaster } from "react-hot-toast";
+import toast ,{ Toaster } from "react-hot-toast";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import useAuth from "../hooks/useAuth";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,9 +37,9 @@ const SingleProduct = () => {
         dispatch(
           addToCart(product)
         );
-      // toast.success("item added to cart successfully", {
-      //   duration: 3000
-      // });
+      toast.success("item added to cart successfully", {
+        duration: 3000
+      });
     });
   };
 
@@ -54,7 +54,7 @@ const SingleProduct = () => {
           <h2 className="text-2xl">{product?.title}</h2>
           {product?.rating && <RatingStar rating={product?.rating.rate} />}
           <div className="mt-1">
-            <h2 className="font-medium text-blue-500 text-xl">&#x20B9; {product?.price}</h2>
+            <h2 className="font-medium text-black-500 text-xl">&#x20B9; {product?.price}</h2>
           </div>
           <table className="mt-2">
             <tbody>
@@ -73,7 +73,7 @@ const SingleProduct = () => {
           <div className="flex flex-wrap items-center mt-4 mb-2 space-x-2">
             <button
               type="button"
-              className="flex items-center space-x-1 mb-2 hover:bg-pink-700 text-white p-2 rounded bg-pink-500"
+              className="flex items-center space-x-1 mb-2 hover:bg-pink-700 text-white p-2 rounded bg-blue-500"
               onClick={addCart}
             >
               <AiOutlineShoppingCart />
@@ -85,7 +85,7 @@ const SingleProduct = () => {
       </div>
       <hr className="mt-4" />
       <br />
-      {/* <Toaster /> */}
+      <Toaster />
     </div>
   );
 };

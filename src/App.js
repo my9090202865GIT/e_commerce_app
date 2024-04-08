@@ -5,7 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import Home from './home';
+import Home from './pages/home';
 import Footer from './components/Footer';
 import { Provider } from "react-redux";
 import { store } from './redux/store';
@@ -13,7 +13,6 @@ import Navbar from './components/Navbar'
 import SingleProduct from "./pages/SingleProduct";
 import LoginModal from './components/LoginModal'
 import Cart from './components/Cart'
-import Img_card from './Img_card'
 
 function App() {
 

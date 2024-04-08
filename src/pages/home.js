@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "./redux/features/cartSlice";
-import { addCategories, addProducts } from './redux/features/productSlice'
+import { addToCart } from "../redux/features/cartSlice";
+import { addCategories, addProducts } from '../redux/features/productSlice'
 import styled from "styled-components";
-import useAuth from "./hooks/useAuth";
-import { addcurrentCategory } from "./redux/features/productSlice";
+import useAuth from "../hooks/useAuth";
+import { addcurrentCategory } from "../redux/features/productSlice";
 import toast, { Toaster } from 'react-hot-toast';
 
-import RatingStar from './components/RatingStar'
+import RatingStar from '../components/RatingStar'
 const StyleComp = styled.div`
   
   .container {
@@ -131,8 +131,12 @@ const Home = () => {
       {showProducts && showProducts.map((item, index) => {
         return (
           <div key={item.id} class="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <Link to={{ pathname: `/product/${item.id}` }}>
+            {/* <Link to={{ pathname: `/product/${item.id}` }} >
               <img class="p-8 rounded-t-lg w-full h-80" src={item.image} alt="product image" />
+            </Link> */}
+            <Link to={{ pathname: `/product/${item.id}` }} >
+              <div class="rounded-t-lg h-80 card-img" style={{backgroundImage: "url("+item.image+")"}}></div>
+              {/* <img class="p-8 rounded-t-lg w-full h-80" src={item.image} alt="product image" /> */}
             </Link>
             <div class="px-5 pb-5">
               <Link to={{ pathname: `/product/${item.id}` }}>
@@ -142,7 +146,7 @@ const Home = () => {
                 <RatingStar rating={item?.rating.rate}></RatingStar>
               </div>
               <div class="flex items-center justify-between">
-                <span class="text-3xl font-bold text-gray-900 dark:text-white">&#x20B9; {item.price}</span>
+                <span class="text-base	 font-bold text-gray-900 dark:text-white">&#x20B9; {item.price}</span>
                 <button onClick={() => addCart(item)} type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Add to cart</button>
               </div>
             </div>

@@ -3,7 +3,7 @@ import { RxCross1 } from "react-icons/rx";
 import { useSelector, useDispatch } from "react-redux";
 import { emptyCart, setCartState } from "../redux/features/cartSlice";
 import CartRow from "./CartRow";
-// import toast, { Toaster } from "react-hot-toast";
+import toast, { Toaster } from "react-hot-toast";
 
 const Cart = () => {
 
@@ -25,16 +25,16 @@ const Cart = () => {
     dispatch(setCartState(false));
     dispatch(emptyCart());
     setCheckout(false);
-    // toast('Hello Darkness!',
-    //   {
-    //     icon: '👏',
-    //     style: {
-    //       borderRadius: '10px',
-    //       background: '#333',
-    //       color: '#fff',
-    //     },
-    //   }
-    // );
+    toast('your order has bveen confirmed!!',
+      {
+        icon: '👏',
+        style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        },
+      }
+    );
   };
 
   if (isOpen) {
@@ -89,7 +89,7 @@ const Cart = () => {
               <>
                 <div className="flex items-center justify-between p-2 border-4">
                   <h2 className="font-bold text-2xl">Total</h2>
-                  <h2 className="font-bold text-2xl">${calculateTotal()}</h2>
+                  <h2 className="font-bold text-2xl">&#x20B9;{calculateTotal()}</h2>
                 </div>
                 <button
                   type="button"
@@ -104,10 +104,10 @@ const Cart = () => {
             )}
           </div>
         )}
-        {/* <Toaster
+        <Toaster
           position="top-right"
           reverseOrder={false}
-        /> */}
+        />
       </div>
     );
   }
