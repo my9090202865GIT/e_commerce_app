@@ -1,4 +1,4 @@
-import { FC, FormEvent, useState } from "react";
+import {  useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { doLogin, updateModal } from "../redux/features/authSlice";
 import { FaUnlock } from "react-icons/fa";

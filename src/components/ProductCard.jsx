@@ -1,4 +1,3 @@
-import { FC } from "react";
 import RatingStar from "./RatingStar";
 import { addToCart } from "../redux/features/cartSlice";
 import { useDispatch } from "react-redux";

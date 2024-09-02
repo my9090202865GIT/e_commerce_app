@@ -31,7 +31,7 @@ export const authSlice = createSlice({
       //   isLoggedIn: true,
       // };
       if (
-        state.users.filter((user) => user.email === action.payload.username && user.password == action.payload.password).length !== 0
+        state.users.filter((user) => user.email === action.payload.username && user.password === action.payload.password).length !== 0
       ) {
         // console.log("do login called")
         localStorage.setItem("username", action.payload.username);

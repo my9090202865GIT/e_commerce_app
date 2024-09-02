@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC } from "react";
 import { AiFillStar, AiOutlineStar } from "react-icons/ai";
 
 const RatingStar = ({ rating }) => {

@@ -1,6 +1,4 @@
-import { FC } from "react";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { BsSearch } from "react-icons/bs";
 import { setCartState } from "../redux/features/cartSlice";
 import { updateModal } from "../redux/features/authSlice";
 import { Link } from "react-router-dom";

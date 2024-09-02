@@ -1,9 +1,8 @@
-import { FC } from "react";
 import {
   IoIosAddCircleOutline,
   IoIosRemoveCircleOutline,
 } from "react-icons/io";
-import { useSelector, useDispatch } from "react-redux";
+import {  useDispatch } from "react-redux";
 import {
   addToCart,
   reduceFromCart,

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { doSignUp } from "../redux/features/authSlice";
-import { store } from "../redux/store";
 
 
 const Signup = ({ closehandler }) => {
